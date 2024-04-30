@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+   <head>
+      <title>Web Notepad</title>
+      <script src="js/jquery.min.js"></script><script src="js/materialize.min.js"></script><script src="js/popup.js"></script>
+      <link rel="stylesheet" href="css/materialize.min.css">
+      <link rel="stylesheet" href="css/style.css">
+      <style media="screen">
+      .tool-box{transition: box-shadow .3s; border-radius: 5px; border: 1px solid #ccc; background: #fff; text-align:center;}
+      .tool-box:hover{box-shadow: 0 0 8px rgba(33,33,33,.2);}
+      table,td,tr{margin:0px; padding:0px;}
+      textarea{background: url(img/textarea.png); font: normal 18px verdana; padding: 2px 10px; border: none; resize: vertical; outline: none;}
+      #div-notestxt{margin-top:2px; margin-bottom:5px;}
+      .btn-simple{border: solid 1px; padding: 20px; padding-bottom: 0px; padding-top: 2px; padding-bottom: 2px;}
+      .note-box{transition: box-shadow .3s; border-radius: 2px; border: 1px solid #ccc; background: #F5C8F4; padding: 5px; margin-bottom: 2px; font: normal 18px verdana; white-space: pre-line;}
+      </style>
+   </head>
+   <body style="width:360px;">
+      <nav class="darken-3">
+         <div class="nav-wrapper"> <img style="margin-top:12px;margin-left:10px;"width="30" height="30" src="img/icon-48.png" alt="web-notepad"/> <a class="brand-logo"><b>Web Notepad</b></a> </div>
+      </nav>
+      <div id="notes" class="notes collection noMargin noPadding noBorder row">
+         <div class="col s12">
+            <div id="div-notestxt"> <br><textarea placeholder="Write your notes..." id="notestxt"></textarea> <a href="#" id="savenotes" class="center btn-simple"><b>Save</b></a> <br></div>
+            <div id="notescontent" class="notescontent"> </div>
+         </div>
+      </div>
+      <br>
+      <div class=""></div>
+   </body>
+</html>

@@ -1,0 +1,60 @@
+body{
+    width:360px
+}
+.notecolor{
+    background-color:#f8da34
+}
+div.docs img,div.routing img{
+    vertical-align:middle;
+    margin-right:8px;
+    width:16px;
+    height:16px
+}
+div.routing{
+    text-transform:capitalize
+}
+nav{
+    height:52px!important;
+    line-height:52px!important
+}
+nav .brand-logo{
+    font-size:1.6rem
+}
+.tabs .tab a{
+    color:#099!important;
+    font-weight:700
+}
+.collection .collection-item{
+    padding:8px 20px!important;
+    line-height:1.2rem!important;
+    font-size:15px!important
+}
+.noMargin,.noPadding{
+    padding:0!important;
+    margin:0!important
+}
+.collection.noBorder{
+    border-top-color:#fff!important;
+    border-left-color:#fff!important;
+    border-right-color:#fff!important
+}
+.tabs .indicator{
+    background-color:#099
+}
+html{
+    font-size:16px!important
+}
+div{word-wrap: break-word;}
+.noteitem,
+    .noteitemcopy{
+        display: inline-block;
+        padding: 1px;
+        transition: transform 0.3s;
+    }
+
+    .noteitem:hover,
+    .noteitemcopy:hover{
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+ 
