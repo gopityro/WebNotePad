@@ -23,3 +23,14 @@ A free web notepad right in your browser. This extension does not save data on s
 - **Add WYSIWYG Editor:** Enhance the note-taking experience by implementing a What You See Is What You Get (WYSIWYG) editor, allowing users to format their notes with ease.
 - **Integrate Edit Functionality:** Enable users to edit their existing notes directly within the extension, providing a seamless editing experience.
 - **Smart Search:** Implement an intelligent search feature that allows users to quickly find relevant notes across all their saved content, improving accessibility and productivity.
+
+## 📸 Screenshots:
+<img width="1000" alt="Screenshot 2024-05-01 at 4 30 49 PM" src="https://github.com/gopityro/WebNotePad/assets/25153647/cdb0bcd2-b8f4-42d4-955b-bb9d75c6abcc">
+
+<img width="1000" alt="Screenshot 2024-05-01 at 4 31 06 PM" src="https://github.com/gopityro/WebNotePad/assets/25153647/044b4997-a034-444a-8e9e-04a6e5fee1c1">
+
+<img width="1000" alt="Screenshot 2024-05-01 at 4 31 53 PM" src="https://github.com/gopityro/WebNotePad/assets/25153647/1dee10c8-f00e-40c7-8007-8d884299114e">
+
+
+
+
