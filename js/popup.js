@@ -15,7 +15,19 @@ $(function() {
                 $("div.notescontent").html(htmlContent);
             }
         });
+
+        // Load cached note
+        chrome.storage.local.get("cachedNote", function(data) {
+            if (data.cachedNote) {
+                $("#notestxt").val(data.cachedNote);
+            }
+        });
     }
+
+    $("#notestxt").on("input", function() {
+        var cachedNoteContent = $(this).val();
+        chrome.storage.local.set({ cachedNote: cachedNoteContent });
+    });
 
     $("#savenotes").on("click", function() {
         var newNoteContent = $("#notestxt").val();
@@ -34,6 +46,9 @@ $(function() {
                 chrome.storage.sync.set({
                     notesdata: notesArray
                 }, function() {
+                    //since, notes has been save, first clear the catched and then update(loadNotes())
+                    // saved list of notes.
+                    chrome.storage.local.remove("cachedNote");
                     loadNotes();
                 });
             });
