@@ -21,10 +21,16 @@
       </nav>
       <div id="notes" class="notes collection noMargin noPadding noBorder row">
          <div class="col s12">
-            <div id="div-notestxt"> <br><textarea placeholder="Write your notes..." id="notestxt"></textarea> <a href="#" id="savenotes" class="center btn-simple"><b>Save</b></a> <br></div>
+            <div id="div-notestxt"> <br><textarea placeholder="Write your notes..." id="notestxt"></textarea> 
+               <div style="display: flex; gap: 8px; align-items: baseline;">
+                  <a href="#" id="savenotes" class="btn-simple"><b>Save</b></a>
+                  <input type="text" id="searchnotes" placeholder="Search notes..." class="browser-default" style="height: 24px; font-size: 12px; margin: 0;" />
+               </div>
+            </div>
             <div id="notescontent" class="notescontent"> </div>
          </div>
       </div>
+      
       <br>
       <div class=""></div>
       <script src="js/popup.js"></script>

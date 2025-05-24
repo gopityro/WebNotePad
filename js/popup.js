@@ -1,27 +1,62 @@
 $(function() {
     var notesData;
 
-    function loadNotes() {
-        chrome.storage.sync.get("notesdata", function(data) {
-            if (void 0 !== data.notesdata) {
-                notesData = data.notesdata;
-                var htmlContent = "";
-                $.each(data.notesdata, function(index, note) {
+    $("#searchnotes").on("input", function () {
+        const searchText = $(this).val().toLowerCase();
+        filterAndRenderNotes(searchText);
+    });
+
+    function filterAndRenderNotes(searchText = "") {
+    chrome.storage.sync.get("notesdata", function(data) {
+        if (void 0 !== data.notesdata) {
+            notesData = data.notesdata;
+            var htmlContent = "";
+
+            // Escape function to safely escape HTML chars
+            function escapeHtml(text) {
+                return text.replace(/&/g, "&amp;")
+                           .replace(/</g, "&lt;")
+                           .replace(/>/g, "&gt;")
+                           .replace(/"/g, "&quot;")
+                           .replace(/'/g, "&#039;");
+            }
+
+            $.each(data.notesdata, function(index, note) {
+                // Check if note matches filter
+                if (
+                    note.content.toLowerCase().includes(searchText) ||
+                    note.date.toLowerCase().includes(searchText)
+                ) {
+                    // Escape content first
+                    let safeContent = escapeHtml(note.content);
+
+                    if (searchText) {
+                        // Create RegExp to replace all matches (case-insensitive)
+                        const regex = new RegExp(`(${searchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+                        // Replace matched text with <mark>wrapped text</mark>
+                        safeContent = safeContent.replace(regex, '<mark>$1</mark>');
+                    }
+
                     htmlContent += '<div class="note-box">';
                     htmlContent += '<small><i class="blue-grey-text lighten-5"><u>' + note.date + "</u></i></small><div id='mainnote" + note.id + "'>";
-                    htmlContent += note.content.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    htmlContent += safeContent;
                     htmlContent += '</div><br><label class="right noteitem" id="' + note.id + '"><img src="img/rubbish-bin.png" /></label> <label class="right noteitemcopy" id="' + note.id + '"><img src="img/copy.png" /></label><br></div>';
-                });
-                $("div.notescontent").html(htmlContent);
-            }
-        });
+                }
+            });
+            $("div.notescontent").html(htmlContent);
+        }
+    });
 
-        // Load cached note
-        chrome.storage.local.get("cachedNote", function(data) {
-            if (data.cachedNote) {
-                $("#notestxt").val(data.cachedNote);
-            }
-        });
+    // Load cached note (optional, unchanged)
+    chrome.storage.local.get("cachedNote", function(data) {
+        if (data.cachedNote) {
+            $("#notestxt").val(data.cachedNote);
+        }
+    });
+}
+
+    function loadNotes() {
+        filterAndRenderNotes();
     }
 
     $("#notestxt").on("input", function() {
